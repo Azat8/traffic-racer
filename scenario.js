@@ -1,8 +1,8 @@
 function Scenario() {
 
-	var roadImage = new Image();	
+	var roadImage = new Image();
 	var roadImageWidth = 500;
-	var roadImageHeight = 600;
+	var roadImageHeight = window.innerHeight;
 
 	this.trees = [];
 
@@ -17,7 +17,7 @@ function Scenario() {
 		roadImage.src = "sprites/scenario/road.jpg";
 
 		this.createTrees();
-		
+
 	}
 
 	this.drawRoad = function(context) {
@@ -29,14 +29,14 @@ function Scenario() {
 		}
 
 		if (this.isTherePothole()) {
-			this.pothole.draw(context);	
+			this.pothole.draw(context);
 		}
 
 		for (var i = 0; i < this.trees.length; i++) {
 			this.trees[i].draw(context);
 		}
-		
-	}
+
+	};
 
 	this.updateRoad = function(emptyLane) {
 		this.y += 1;
@@ -48,7 +48,7 @@ function Scenario() {
 	  	if (this.y2 >= 0) {
 	  		this.y2 = -roadImageHeight;
 	  	}
-  	
+
   		if (this.hasObstaclesOnRoad()) {
 	  		this.updateObstacles();
   		} else {
@@ -56,7 +56,7 @@ function Scenario() {
   		}
 
   		this.updateTrees();
-  		
+
 	}
 
 	this.updateObstacles = function() {
@@ -65,7 +65,7 @@ function Scenario() {
 	  	}
 
 	  	if (this.isTherePothole()) {
-		  	this.pothole.update(this.canvas.height);	
+		  	this.pothole.update(this.canvas.height);
 	  	}
 	}
 
@@ -96,14 +96,14 @@ function Scenario() {
 
 	this.createPothole = function(emptyLane) {
 		if (!this.pothole) {
-			this.pothole = new Obstacle();	
-		}		
+			this.pothole = new Obstacle();
+		}
 		this.pothole.initialize(emptyLane, GameConfig.obstacle.pothole);
 	}
 
 	this.createOil = function(emptyLane) {
 		if (!this.oil) {
-			this.oil = new Obstacle();	
+			this.oil = new Obstacle();
 		}
 		this.oil.initialize(emptyLane, GameConfig.obstacle.oil);
 	}
@@ -132,7 +132,7 @@ function Scenario() {
 				treeSide = 1;
 			} else {
 				treePositionIndex++;
-			}			
+			}
 		}
 	}
 

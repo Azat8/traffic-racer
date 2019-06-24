@@ -8,8 +8,8 @@ function Car() {
 	var carImage = new Image();
 	var isColliding = false;
 	var didPlayHorn = false;
-	
-	var carTypeArray = ["Ambulance.png", "Audi.png", "Black_viper.png", 
+
+	var carTypeArray = ["Ambulance.png", "Audi.png", "Black_viper.png",
 		"Car.png", "Mini_truck.png", "Mini_van.png",
 		"Police.png", "taxi.png", "truck.png"];
 
@@ -36,7 +36,7 @@ function Car() {
 
 		this.isMovingLeft = false;
 		this.isMovingRight = false;
-		
+
 		this.y = initialPosition;
 
 		this.height = 100;
@@ -102,11 +102,11 @@ function Car() {
 	}
 
 	this.update = function() {
-		
+
 		// If there is a car near my back, I must increase my speed
 		if (this.carNearMyBack) {
 			this.increaseSpeed(0.005);
-			
+
 			if (CollisionDetection.isNearY(this.collisionArea, this.carNearMyBack.collisionArea, 40)) {
 				this.carSpeed = this.carNearMyBack.carSpeed;
 			}
@@ -126,17 +126,17 @@ function Car() {
 			this.updatePositionXAccordingLane(currentLane);
 		}
 
-	    context.drawImage(carImage, this.x, this.y, 100, 100);
-	    
+	    context.drawImage(carImage, this.x + window.innerWidth /2 - 400, this.y, 100, 100);
+
 	    if (GameConfig.debug.showCarId) {
-	    	context.fillText(this.carId, this.x + 10, this.y - 10);	
+	    	context.fillText(this.carId, this.x + 10, this.y - 10);
 	    }
-	    
+
 	    if (GameConfig.debug.showCollisionArea) {
-	    	context.strokeRect(this.collisionArea.x, this.collisionArea.y, 
-	    	this.collisionArea.width, this.collisionArea.height);	
+	    	context.strokeRect(this.collisionArea.x, this.collisionArea.y,
+	    	this.collisionArea.width, this.collisionArea.height);
 	    }
-	    
+
 	    this.drawNearFrontAlert(context);
 	    this.playHorn();
 
@@ -149,7 +149,7 @@ function Car() {
 				this.moveToRight();
 			}
 			this.isSliding = false;
-		} 
+		}
 
 	}
 
@@ -168,7 +168,7 @@ function Car() {
 		if (this.carNearMyFront) {
 	    	var color1 = "red";
 	    	var color2 = "yellow";
-	    	
+
 	    	if (colorCount < 10) {
 	    		colorCount++;
 	    		color1 = "red";
@@ -178,7 +178,7 @@ function Car() {
 	    		color1 = "yellow";
 	    		colorCount = 0;
 	    	}
-	    	Util.drawTextWithShadow(context, "WATCH OUT!!! ", 
+	    	Util.drawTextWithShadow(context, "WATCH OUT!!! ",
 	    		this.x - 30, this.y - 20, color1, 0, 0, color2);
 	    }
 	}
@@ -187,7 +187,7 @@ function Car() {
 		if (this.carNearMyBack) {
 	    	var color1 = "red";
 	    	var color2 = "yellow";
-	    	
+
 	    	if (colorCount < 10) {
 	    		colorCount++;
 	    		color1 = "red";
@@ -197,7 +197,7 @@ function Car() {
 	    		color1 = "yellow";
 	    		colorCount = 0;
 	    	}
-	    	Util.drawTextWithShadow(context, "BACK " + this.carNearMyBack.carId, 
+	    	Util.drawTextWithShadow(context, "BACK " + this.carNearMyBack.carId,
 	    		this.x - 30, this.y + 120, color1, 0, 0, color2);
 	    }
 	}

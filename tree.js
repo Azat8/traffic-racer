@@ -16,14 +16,14 @@ function Tree() {
 		this.side = sidePar;
 
 		image.src = this.getRandomTreeImageSrc();
-		
+
 		this.x = this.newXPosition();
 		this.y = (-60 -this.height) * (initialPosition);
 		this.isOnScreen = true;
 	}
 
 	this.draw = function(context) {
-		context.drawImage(image, this.x, this.y, this.width, this.height);		
+		context.drawImage(image, this.x, this.y, this.width, this.height);
 	}
 
 	this.update = function(maxY) {
@@ -38,13 +38,14 @@ function Tree() {
 	}
 
 	this.newXPosition = function() {
-		if (this.side == 0) {
-			return Math.random() * (170 - this.width);
-		} 
-		else {
-			return 650 + Math.random() * (160 - this.width);
-		}
-	}	
+		console.log(this.side);
+		// if (this.side == 0) {
+		// 	return Math.random() * (170 - this.width);
+		// }
+		// else {
+		// 	return 650 + Math.random() * (500 - this.width);
+		// }
+	}
 
 	this.getRandomTreeImageSrc = function() {
 		var imageSrcArray = [];

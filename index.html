@@ -3,7 +3,7 @@
 <html>
 <body>
 
-<canvas id="canvas" width="800" height="600" style="border:1px solid #d3d3d3;"> Your browser does not support the HTML5 canvas tag.</canvas>
+<canvas id="canvas"  style="border:1px solid #d3d3d3;"> Your browser does not support the HTML5 canvas tag.</canvas>
 <script src="util.js"></script>
 <script src="gameConfig.js"></script>
 <script src="levelController.js"></script>
@@ -16,6 +16,14 @@
 <script src="score.js"></script>
 <script src="game.js"></script>
 
+
+<style>
+  html, canvas, body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+</style>
 
 <script>
     Game.initialize();
@@ -32,9 +40,9 @@
 
             while ((new Date).getTime() > nextGameTick) {
                 Game.update();
-                
+
                 nextGameTick += Game.skipTicks;
-                
+
                 loops++;
                 points++;
 
@@ -52,19 +60,19 @@
         var onEachFrame;
         if (window.webkitRequestAnimationFrame) {
             onEachFrame = function(cb) {
-                var _cb = function() { 
-                    cb(); 
-                    webkitRequestAnimationFrame(_cb); 
+                var _cb = function() {
+                    cb();
+                    webkitRequestAnimationFrame(_cb);
                 }
                 _cb();
             };
         }
         else if (window.mozRequestAnimationFrame) {
             onEachFrame = function(cb) {
-                var _cb = function() { 
-                    cb(); 
-                    mozRequestAnimationFrame(_cb); 
-                }   
+                var _cb = function() {
+                    cb();
+                    mozRequestAnimationFrame(_cb);
+                }
                 _cb();
             };
         }

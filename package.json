@@ -1,0 +1,23 @@
+{
+  "name": "simple-traffic-racer-game-master",
+  "version": "1.0.0",
+  "description": "This a simple Traffic Racer Game using Javascript and canvas. # traffic-racer",
+  "main": "car.js",
+  "dependencies": {
+    "koji": "^0.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azat8/traffic-racer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azat8/traffic-racer/issues"
+  },
+  "homepage": "https://github.com/Azat8/traffic-racer#readme"
+}

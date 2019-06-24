@@ -7,6 +7,10 @@ var score = new Score();
 var totalPoints;
 var lastPoints;
 
+// Game.canvasHeight = 600;
+// Game.canvasWidth = 800;
+
+
 Game.canvasHeight = 600;
 Game.canvasWidth = 800;
 
@@ -29,25 +33,31 @@ Game.initialize = function() {
   this.canvas = document.getElementById("canvas");
   this.context = canvas.getContext("2d");
 
+  this.canvas.setAttribute('height', window.innerHeight);
+  this.canvas.setAttribute('width', window.innerWidth);
+
+  Game.canvasWidth = window.innerWidth;
+  Game.canvasHeight = window.innerHeight;
+
   // Defaulf Font
   this.context.font = "30px Arial";
 
   Game.showStartScreen();
 
   document.addEventListener('keydown', function(event) {
-    
+
     if (event.keyCode == leftArrowKeyCode) {
       player.moveToLeft();
     } else if (event.keyCode == rightArrowKeyCode) {
       player.moveToRight();
-    } 
+    }
 
     if (!gameStarted) {
       gameStarted = true;
       isGameOver = false;
       Game.startGame();
     }
-    
+
   }, false);
 
 };
@@ -71,7 +81,7 @@ Game.startGame = function() {
         this.currentTime = 2.5;
         this.play();
     }, false);
-  
+
   gameOverThemeSound.pause();
   gameOverThemeSound.currentTime = 0;
 
@@ -122,9 +132,9 @@ Game.draw = function(points) {
   }
 
   if (GameConfig.debug.showGuideLines) {
-    Util.drawGuidelines(this.context);  
+    Util.drawGuidelines(this.context);
   }
-  
+
 };
 
 
@@ -148,7 +158,7 @@ Game.update = function() {
     Game.fps = levelController.increaseSpeed();
     lastPoints++;
   }
-  
+
 
 };
 
